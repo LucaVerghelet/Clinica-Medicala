@@ -34,7 +34,8 @@ public class UserProfile {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
-
+    public UserProfile() {
+    }
 
 
     public UserProfile(String username, String email, String parola) {
@@ -47,6 +48,14 @@ public class UserProfile {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
 

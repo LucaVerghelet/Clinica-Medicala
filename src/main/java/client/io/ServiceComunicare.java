@@ -16,12 +16,12 @@ public class ServiceComunicare {
         this.hostName = host.getHostName();
     }
 
-    public <T> String trimiteMesaj(T mesaj) throws IOException, ClassNotFoundException {
+    public <T, O> O trimiteMesaj(T mesaj) throws IOException, ClassNotFoundException {
         Socket socket = new Socket(this.hostName, PORT);
         ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
         oos.writeObject(mesaj);
         ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-        String raspuns = (String) ois.readObject();
+        O raspuns = (O) ois.readObject();
         ois.close();
         oos.close();
         return raspuns;

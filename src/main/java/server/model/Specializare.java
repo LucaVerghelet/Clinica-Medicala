@@ -39,6 +39,14 @@ public class Specializare {
         Specializare obj = em.find(Specializare.class, nume);
         return obj;
     }
+
+    public String getNumeSpecializare() {
+        return numeSpecializare;
+    }
+
+    public boolean isNecesitaRecomandare() {
+        return necesitaRecomandare;
+    }
 }
 
 

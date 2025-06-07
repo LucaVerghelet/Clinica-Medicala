@@ -39,7 +39,8 @@ public class Pacient {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
-
+    public Pacient() {
+    }
 
     public Pacient( String nume, String prenume, String cnp, String alergii, UserProfile userProfile) {
         this.userProfile = userProfile;

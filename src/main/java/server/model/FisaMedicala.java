@@ -47,6 +47,8 @@ public class FisaMedicala {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
+    public FisaMedicala() {
+    }
 
     public FisaMedicala(Pacient pacient, Doctor doctor, String comentariu, String diagnostic, String tratament, Prescriptie prescriptie) {
         this.pacient = pacient;

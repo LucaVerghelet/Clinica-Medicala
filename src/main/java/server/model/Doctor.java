@@ -1,5 +1,6 @@
 package server.model;
 
+import common.dto.DoctorDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CurrentTimestamp;
@@ -41,6 +42,9 @@ public class Doctor {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
+    public Doctor() {
+    }
+
     public Doctor( String nume, String prenume, Specializare specializare, UserProfile userProfile) {
         this.userProfile = userProfile;
         this.nume = nume;
@@ -54,6 +58,22 @@ public class Doctor {
 
     public void setSpecializare(Specializare specializare) {
         this.specializare = specializare;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public DoctorDTO toDto() {
+        return new DoctorDTO(id, nume, userProfile.getEmail(), specializare.getNumeSpecializare(), specializare.isNecesitaRecomandare());
     }
 }
 

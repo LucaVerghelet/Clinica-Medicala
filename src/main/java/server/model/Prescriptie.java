@@ -33,7 +33,8 @@ public class Prescriptie {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
-
+    public Prescriptie() {
+    }
 
     public Prescriptie(Integer id, String text_prescriptie) {
 

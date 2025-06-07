@@ -1,6 +1,5 @@
 package server;
 import server.io.Server;
-
 import java.io.IOException;
 
 public class Main {

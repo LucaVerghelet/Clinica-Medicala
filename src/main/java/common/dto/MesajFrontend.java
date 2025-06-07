@@ -5,6 +5,7 @@ public class MesajFrontend<T> implements Serializable {
     private TipOperatie tipOperatie;
     private T dto;
 
+
     public MesajFrontend(TipOperatie tipOperatie, T dto) {
         this.tipOperatie = tipOperatie;
         this.dto = dto;

@@ -1,5 +1,6 @@
 package server.model;
 
+import common.dto.ProgramareDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CurrentTimestamp;
@@ -26,6 +27,7 @@ public class Programare {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column (name = "data")
@@ -45,14 +47,27 @@ public class Programare {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
+    public Programare() {
+    }
 
-
-    public Programare(LocalDate data, LocalTime ora, Pacient pacient, Doctor doctor) {
+    public Programare(LocalDate data, LocalTime ora, Pacient pacient, Doctor doctor, String comentariu) {
         this.data = data;
         this.ora = ora;
         this.pacient = pacient;
         this.doctor = doctor;
         this.comentariu = comentariu;
+    }
+
+    public ProgramareDTO getProgramareDTO() {
+        ProgramareDTO programareDTO = new ProgramareDTO();
+        programareDTO.setEmailPacient(pacient.getUserProfile().getEmail());
+        programareDTO.setNumePacient(pacient.getNume() + " " + pacient.getPrenume());
+        programareDTO.setEmailDoctor(doctor.getUserProfile().getEmail());
+        programareDTO.setNumeDocotor(doctor.getNume() + " " + doctor.getPrenume());
+        programareDTO.setData(data);
+        programareDTO.setOra(ora);
+        programareDTO.setComentariu(comentariu);
+        return programareDTO;
     }
 
 

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MeniuInregistrare {
 
-    public  MesajFrontend<InregistrareUserDTO> inregistrareUser() {
+    public MesajFrontend<InregistrareUserDTO> inregistrareUser() {
         Scanner sc = new Scanner(System.in);
         System.out.println("In cazul in care sunteti doctor introduceti 1. In cazul in care sunteti pacient introduceti 2.");
         int optiune = sc.nextInt();

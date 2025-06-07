@@ -1,8 +1,7 @@
 package client;
 
 import client.io.ServiceComunicare;
-import client.menu.MeniuInregistrare;
-import client.menu.MeniuPrincipal;
+import client.menu.*;
 
 import java.io.IOException;
 
@@ -12,6 +11,16 @@ public class Main {
         ServiceComunicare serviceComunicare = new ServiceComunicare();
         MeniuPrincipal meniuPrincipal = new MeniuPrincipal(serviceComunicare);
         MeniuInregistrare meniuInregistrare = new MeniuInregistrare();
-        meniuPrincipal.afisare(meniuInregistrare);
+        MeniuProgramari meniuProgramari = new MeniuProgramari();
+        MeniuDoctor meniuDoctor = new MeniuDoctor(meniuProgramari, serviceComunicare);
+        MeniuSelectareDoctor meniuSelectareDoctor = new MeniuSelectareDoctor();
+        MeniuCreeareProgramare meniuCreeareProgramare = new MeniuCreeareProgramare();
+        MeniuPacient meniuPacient = new MeniuPacient(meniuProgramari, serviceComunicare,
+                meniuSelectareDoctor, meniuCreeareProgramare);
+        MeniuLogin meniuLogin = new MeniuLogin();
+        meniuPrincipal.afisare(meniuInregistrare,
+                meniuLogin,
+                meniuDoctor,
+                meniuPacient);
     }
 }
