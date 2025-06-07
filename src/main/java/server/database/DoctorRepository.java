@@ -23,10 +23,13 @@ public class DoctorRepository extends Repository {
 
     public ArrayList<DoctorDTO> findAll() {
         try {
+            // Also load specializare and userProfile eagerly
             ArrayList<Doctor> doctors = (ArrayList<Doctor>) this.em.createQuery(
-                            "SELECT d FROM Doctor d", Doctor.class)
+                            "SELECT d FROM Doctor d JOIN FETCH d.specializare JOIN FETCH d.userProfile", Doctor.class)
                     .getResultList();
             ArrayList<DoctorDTO> doctorDTOs = new ArrayList<>();
+            // doctor.specialzare is not being loaded
+            // eagerly, so we need to fetch it explicitly
             for (Doctor doctor : doctors) {
                 doctorDTOs.add(doctor.toDto());
             }

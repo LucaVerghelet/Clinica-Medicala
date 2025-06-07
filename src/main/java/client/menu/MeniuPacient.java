@@ -40,7 +40,7 @@ public class MeniuPacient extends Meniu {
 
     public void afisare() throws IOException, ClassNotFoundException {
         while (true) {
-            System.out.println("Meniu Doctor (" + emailPacient + ")");
+            System.out.println("Meniu Pacient (" + emailPacient + ")");
             Integer optiune = meniuSelectie(this.optiuni);
             switch (optiune) {
                 case 0:
@@ -52,7 +52,8 @@ public class MeniuPacient extends Meniu {
                 case 1:
                     MesajFrontend<String> mesajSelectareDoctori = new MesajFrontend<>(TipOperatie.VIZUALIZARE_DOCTORI,
                             emailPacient);
-                    MesajBackend<ArrayList<DoctorDTO>> raspunsCreeareProgramare = this.serviceComunicare.trimiteMesaj(mesajSelectareDoctori);
+                    MesajBackend<ArrayList<DoctorDTO>> mesajDoctori = this.serviceComunicare.trimiteMesaj(mesajSelectareDoctori);
+                    meniuSelectareDoctor.setDoctori(mesajDoctori.getDto());
                     DoctorDTO doctorSelectat = this.meniuSelectareDoctor.afisare();
 
                     ProgramareDTO programare = this.meniuCreeareProgramare.afisare(doctorSelectat.getEmail(), emailPacient);

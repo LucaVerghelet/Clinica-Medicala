@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Doctor")
-@NamedQuery(name = "Doctor.findAll", query = "SELECT d FROM Doctor d")
+@NamedQuery(name = "Doctor.findAll", query = "SELECT d FROM Doctor d JOIN FETCH d.specializare JOIN FETCH d.userProfile")
 
 public class Doctor {
 

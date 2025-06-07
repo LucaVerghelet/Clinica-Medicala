@@ -1,6 +1,8 @@
 package common.dto;
 
-public class DoctorDTO {
+import java.io.Serializable;
+
+public class DoctorDTO implements Serializable {
     private Integer id;
     private String nume;
     private String email;

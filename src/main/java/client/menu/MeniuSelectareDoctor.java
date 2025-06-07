@@ -25,7 +25,7 @@ public class MeniuSelectareDoctor extends Meniu {
             System.out.println("Optiune invalida. Te rog sa incerci din nou.");
             return null;
         } else {
-            return doctori.get(optiune - 1);
+            return doctori.get(optiune);
         }
     }
 }
