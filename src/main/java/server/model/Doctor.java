@@ -1,4 +1,4 @@
-package org.example.model;
+package server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -40,8 +40,6 @@ public class Doctor {
     @Column (name = "updatedAt")
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
-
-
 
     public Doctor( String nume, String prenume, Specializare specializare, UserProfile userProfile) {
         this.userProfile = userProfile;

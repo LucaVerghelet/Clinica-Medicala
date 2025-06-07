@@ -1,5 +1,4 @@
-package org.example.dto;
-
+package common.dto;
 import java.io.Serializable;
 
 public class InregistrareDoctorDTO extends InregistrareUserDTO implements Serializable {
@@ -11,9 +10,7 @@ public class InregistrareDoctorDTO extends InregistrareUserDTO implements Serial
         this.numeSpecializare = numeSpecializare;
     }
 
-
     public String getNumeSpecializare() {
         return numeSpecializare;
     }
-
 }

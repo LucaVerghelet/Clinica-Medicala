@@ -1,4 +1,4 @@
-package org.example.dto;
+package common.dto;
 
 public enum TipOperatie {
     INREGISTRARE_PACIENT,

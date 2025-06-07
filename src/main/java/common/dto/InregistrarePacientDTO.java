@@ -1,5 +1,4 @@
-package org.example.dto;
-
+package common.dto;
 import java.io.Serializable;
 
 public class InregistrarePacientDTO extends InregistrareUserDTO implements Serializable {

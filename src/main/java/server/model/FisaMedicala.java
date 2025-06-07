@@ -1,20 +1,18 @@
-package org.example.model;
+package server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CurrentTimestamp;
 import org.hibernate.generator.EventType;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 
 @Entity
-@Table(name = "Programare")
-@NamedQuery(name = "Programare.findAll", query = "SELECT p FROM Programare p")
+@Table(name = "FisaMedicala")
+@NamedQuery(name = "FisaMedicala.findAll", query = "SELECT f FROM FisaMedicala f")
 
-public class Programare {
+public class FisaMedicala {
 
     @ManyToOne
     @JoinColumn(name = "Pacient_cnp", referencedColumnName = "cnp")
@@ -28,14 +26,18 @@ public class Programare {
     @Column(name = "id")
     private Integer id;
 
-    @Column (name = "data")
-    private LocalDate data;
-
-    @Column (name = "ora")
-    private LocalTime ora;
-
     @Column (name = "comentariu")
     private String comentariu;
+
+    @Column (name = "diagnostic")
+    private String diagnostic;
+
+    @Column (name = "tratanment")
+    private String tratament;
+
+    @OneToOne
+    @JoinColumn(name = "Prescriptie_id", referencedColumnName = "id")
+    private Prescriptie prescriptie;
 
     @Column (name = "createdAt")
     @CurrentTimestamp(event = EventType.INSERT)
@@ -46,15 +48,14 @@ public class Programare {
     private LocalDateTime updatedAt;
 
 
-
-    public Programare(LocalDate data, LocalTime ora, Pacient pacient, Doctor doctor) {
-        this.data = data;
-        this.ora = ora;
+    public FisaMedicala(Pacient pacient, Doctor doctor, String comentariu, String diagnostic, String tratament, Prescriptie prescriptie) {
         this.pacient = pacient;
         this.doctor = doctor;
         this.comentariu = comentariu;
+        this.diagnostic = diagnostic;
+        this.tratament = tratament;
+        this.prescriptie = prescriptie;
     }
-
 
     public void setPacient(Pacient pacient) {
         this.pacient = pacient;
@@ -68,16 +69,20 @@ public class Programare {
         this.id = id;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public void setOra(LocalTime ora) {
-        this.ora = ora;
-    }
-
     public void setComentariu(String comentariu) {
         this.comentariu = comentariu;
+    }
+
+    public void setDiagnostic(String diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
+    public void setTratament(String tratament) {
+        this.tratament = tratament;
+    }
+
+    public void setPrescriptie(Prescriptie prescriptie) {
+        this.prescriptie = prescriptie;
     }
 }
 

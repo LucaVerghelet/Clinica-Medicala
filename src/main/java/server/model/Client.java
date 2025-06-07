@@ -1,4 +1,4 @@
-package org.example.model;
+package server.model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

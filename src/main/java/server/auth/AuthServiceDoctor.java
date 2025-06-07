@@ -1,14 +1,12 @@
-package org.example.auth;
+package server.auth;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import org.example.database.HibernateUtil;
-import org.example.dto.InregistrareDoctorDTO;
-import org.example.dto.InregistrarePacientDTO;
-import org.example.model.Doctor;
-import org.example.model.Pacient;
-import org.example.model.Specializare;
-import org.example.model.UserProfile;
+import server.database.HibernateUtil;
+import common.dto.InregistrareDoctorDTO;
+import server.model.Doctor;
+import server.model.Specializare;
+import server.model.UserProfile;
 
 public class AuthServiceDoctor {
     private final HibernateUtil hibernateUtil;

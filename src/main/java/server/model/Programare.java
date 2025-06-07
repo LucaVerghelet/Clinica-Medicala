@@ -1,4 +1,4 @@
-package org.example.model;
+package server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -11,10 +11,10 @@ import java.time.LocalTime;
 
 
 @Entity
-@Table(name = "FisaMedicala")
-@NamedQuery(name = "FisaMedicala.findAll", query = "SELECT f FROM FisaMedicala f")
+@Table(name = "Programare")
+@NamedQuery(name = "Programare.findAll", query = "SELECT p FROM Programare p")
 
-public class FisaMedicala {
+public class Programare {
 
     @ManyToOne
     @JoinColumn(name = "Pacient_cnp", referencedColumnName = "cnp")
@@ -28,18 +28,14 @@ public class FisaMedicala {
     @Column(name = "id")
     private Integer id;
 
+    @Column (name = "data")
+    private LocalDate data;
+
+    @Column (name = "ora")
+    private LocalTime ora;
+
     @Column (name = "comentariu")
     private String comentariu;
-
-    @Column (name = "diagnostic")
-    private String diagnostic;
-
-    @Column (name = "tratanment")
-    private String tratament;
-
-    @OneToOne
-    @JoinColumn(name = "Prescriptie_id", referencedColumnName = "id")
-    private Prescriptie prescriptie;
 
     @Column (name = "createdAt")
     @CurrentTimestamp(event = EventType.INSERT)
@@ -50,14 +46,15 @@ public class FisaMedicala {
     private LocalDateTime updatedAt;
 
 
-    public FisaMedicala(Pacient pacient, Doctor doctor, String comentariu, String diagnostic, String tratament, Prescriptie prescriptie) {
+
+    public Programare(LocalDate data, LocalTime ora, Pacient pacient, Doctor doctor) {
+        this.data = data;
+        this.ora = ora;
         this.pacient = pacient;
         this.doctor = doctor;
         this.comentariu = comentariu;
-        this.diagnostic = diagnostic;
-        this.tratament = tratament;
-        this.prescriptie = prescriptie;
     }
+
 
     public void setPacient(Pacient pacient) {
         this.pacient = pacient;
@@ -71,20 +68,16 @@ public class FisaMedicala {
         this.id = id;
     }
 
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public void setOra(LocalTime ora) {
+        this.ora = ora;
+    }
+
     public void setComentariu(String comentariu) {
         this.comentariu = comentariu;
-    }
-
-    public void setDiagnostic(String diagnostic) {
-        this.diagnostic = diagnostic;
-    }
-
-    public void setTratament(String tratament) {
-        this.tratament = tratament;
-    }
-
-    public void setPrescriptie(Prescriptie prescriptie) {
-        this.prescriptie = prescriptie;
     }
 }
 

@@ -1,12 +1,12 @@
-package org.example.io;
+package server.io;
 
-import org.example.auth.AuthServiceDoctor;
-import org.example.auth.AuthServicePacient;
-import org.example.database.HibernateUtil;
-import org.example.dto.InregistrareDoctorDTO;
-import org.example.dto.InregistrarePacientDTO;
-import org.example.dto.MesajFrontend;
-import org.example.dto.TipOperatie;
+import server.auth.AuthServiceDoctor;
+import server.auth.AuthServicePacient;
+import server.database.HibernateUtil;
+import common.dto.InregistrareDoctorDTO;
+import common.dto.InregistrarePacientDTO;
+import common.dto.MesajFrontend;
+import common.dto.TipOperatie;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -54,7 +54,7 @@ public class Server {
         }
     }
 
-    public static <T> void main(String args[]) throws IOException, ClassNotFoundException {
+    public void start() throws IOException, ClassNotFoundException {
         server = new ServerSocket(port);
         HibernateUtil hibernateUtil = new HibernateUtil();
         AuthServiceDoctor authServiceDoctor = new AuthServiceDoctor(hibernateUtil);
@@ -63,7 +63,7 @@ public class Server {
             System.out.println("Waiting for the client request");
             Socket socket = server.accept();
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            MesajFrontend<T> message = (MesajFrontend<T>) ois.readObject();
+            MesajFrontend message = (MesajFrontend) ois.readObject();
             String raspuns = procesareOperatie(message, authServiceDoctor, authServicePacient);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeObject(raspuns);

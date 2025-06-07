@@ -1,11 +1,8 @@
-package org.example.model;
+package server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.annotations.CurrentTimestamp;
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.generator.EventType;
 
 import java.time.LocalDateTime;
@@ -32,7 +29,8 @@ public class Specializare {
     @CurrentTimestamp(event = {EventType.INSERT, EventType.UPDATE})
     private LocalDateTime updatedAt;
 
-
+    public Specializare() {
+    }
 
     public Specializare( String nume, String prenume, Integer CNP, String alergii) {
 
