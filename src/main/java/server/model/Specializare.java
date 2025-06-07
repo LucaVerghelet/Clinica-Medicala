@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @NamedQuery(name = "Specializare.findAll", query = "SELECT s FROM Specializare s")
 
 public class Specializare {
-
     @Id
     @Column(name = "numeSpecializare")
     private String numeSpecializare;
@@ -33,10 +32,7 @@ public class Specializare {
     }
 
     public Specializare( String nume, String prenume, Integer CNP, String alergii) {
-
         this.numeSpecializare = numeSpecializare;
-
-
     }
 
     public static Specializare findByNume(String nume, EntityManager em) {
