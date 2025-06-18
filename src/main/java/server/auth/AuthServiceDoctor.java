@@ -24,6 +24,7 @@ public class AuthServiceDoctor {
         Specializare specializare = Specializare.findByNume(inregistrareDoctorDTO.getNumeSpecializare(), em);
         UserProfile u = new UserProfile(inregistrareDoctorDTO.getUsername(), inregistrareDoctorDTO.getEmail(), inregistrareDoctorDTO.getParola());
         Doctor d = new Doctor(inregistrareDoctorDTO.getNume(), inregistrareDoctorDTO.getPrenume(), specializare ,u);
+        System.out.println(specializare.getNumeSpecializare());
         em.persist(d);
         em.persist(u);
 
